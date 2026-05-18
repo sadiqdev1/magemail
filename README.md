@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MageMail — Gmail Alias Generator
 
-## Getting Started
+> Generate every possible Gmail dot alias from your address instantly. Free, client-side, no sign-up required.
 
-First, run the development server:
+**Live:** [magemail.vercel.app](https://magemail.vercel.app)
+
+## What it does
+
+Gmail ignores dots in usernames — `j.ohndoe@gmail.com` and `johndoe@gmail.com` are the same inbox. This tool computes all **2ⁿ⁻¹** possible dot placements for any Gmail username, giving you a full list of working aliases you can use to sign up for services, filter email, or track who sells your data.
+
+## Features
+
+- Instant generation — all logic runs in the browser
+- Copy & next — copies the current alias and auto-advances to the next
+- Download as CSV or TXT
+- View all aliases in a scrollable list
+- No data stored, no server, no sign-up
+
+## Tech stack
+
+- [Next.js 16](https://nextjs.org) (static export)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans)
+- TypeScript
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev       # http://localhost:3000
+npm run build     # static export → /out
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Author
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Abubakar Ibrahim** ([@sadiqdev1](https://sadiqdev-portfolio.vercel.app))
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Not affiliated with Google LLC. Gmail is a trademark of Google LLC.*

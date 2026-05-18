@@ -1,26 +1,159 @@
 @import "tailwindcss";
 
+/* ── Custom properties ───────────────────────────────────────────────────── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-mono:    "Geist Mono", "Fira Code", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Font helpers ─────────────────────────────────────────────────────────── */
+
+.display-heading {
+  font-family: var(--font-display);
+  font-style: italic;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Dot grid texture ─────────────────────────────────────────────────────── */
+
+.dot-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: 14px 14px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
 }
+
+/* ── Accent beam (hero top rule) ─────────────────────────────────────────── */
+
+.accent-beam {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.5) 40%, rgba(139,92,246,0.4) 60%, transparent);
+}
+
+/* ── Status dot ───────────────────────────────────────────────────────────── */
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 0 rgba(52,211,153,0.6);
+  animation: ping-soft 2.5s cubic-bezier(0,0,0.2,1) infinite;
+}
+
+@keyframes ping-soft {
+  0%   { box-shadow: 0 0 0 0 rgba(52,211,153,0.5); }
+  70%  { box-shadow: 0 0 0 6px rgba(52,211,153,0); }
+  100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); }
+}
+
+/* ── Strike accent on hero word ──────────────────────────────────────────── */
+
+.strike-accent {
+  position: absolute;
+  top: 52%;
+  left: -2px;
+  right: -2px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(99,102,241,0.5), rgba(139,92,246,0.3));
+  transform: skewX(-4deg);
+}
+
+/* ── Logo mark hover ──────────────────────────────────────────────────────── */
+
+.logo-mark {
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.logo-mark:hover {
+  border-color: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.06);
+}
+
+/* ── Free pill ────────────────────────────────────────────────────────────── */
+
+.pill-free {
+  letter-spacing: 0.18em;
+}
+
+/* ── Terminal bar ─────────────────────────────────────────────────────────── */
+
+.term-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.cursor-blink {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  animation: blink 1.1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── Step card accent line ────────────────────────────────────────────────── */
+
+.step-index-line {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  border-radius: 1px;
+}
+
+/* ── Generator frame ─────────────────────────────────────────────────────── */
+
+.generator-frame {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.03),
+    0 32px 64px -24px rgba(0,0,0,0.7),
+    0 0 80px -30px rgba(99,102,241,0.12);
+}
+
+/* ── Entrance animations ─────────────────────────────────────────────────── */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-up    { animation: fade-up  0.55s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-in    { animation: fade-in  0.4s ease-out both; }
+
+.delay-0   { animation-delay:   0ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-350 { animation-delay: 350ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
