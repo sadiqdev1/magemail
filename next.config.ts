@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // Full server-side web app — not a static export
   images: {
     unoptimized: true,
   },

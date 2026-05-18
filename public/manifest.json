@@ -1,0 +1,16 @@
+{
+  "name": "MageMail — Gmail Alias Generator",
+  "short_name": "MageMail",
+  "description": "Generate every possible Gmail dot alias from your address instantly. Free, no sign-up.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090e",
+  "theme_color": "#09090e",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
